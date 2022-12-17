@@ -13,6 +13,6 @@ def index(request):
     return HttpResponse(response)
 
 
-def poll(request):
+def poll(request, poll_id):
 
-    return HttpResponse('Poll')
+    return HttpResponse(f'Poll {poll_id}')
