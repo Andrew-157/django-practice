@@ -1,11 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-# Create your views here.
+
+from .models import Question
 
 
 def index(request):
 
-    return HttpResponse('Hello Django!')
+    question_list = Question.objects.order_by('-published_at')[:10]
+
+    response = '/n'.join([q.question_text for q in question_list])
+
+    return HttpResponse(response)
 
 
 def poll(request):
